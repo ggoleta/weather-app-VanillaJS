@@ -34,10 +34,12 @@ const getCity = async (city) => {
 
 }
 
-getCity('london')
+/**
+ getCity('london')
     .then(data => {
         return getWeather(data.Key)
     }).then(data => console.log(data))
     .catch(err => console.log(err))
 
 getWeather("45881")
+ */
