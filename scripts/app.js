@@ -9,10 +9,13 @@ const updateCity = async (city) => {
     // getWeather is a synchronous function too
     const weather = await getWeather(cityDets.Key)
 
-    return {
-        cityDets: cityDets,
-        weather: weather
-    }
+    //return {
+    //    cityDets: cityDets,
+    //    weather: weather
+    //}
+
+    // Object Shorthand Notation
+    return { cityDets, weather } 
 
 }
 
