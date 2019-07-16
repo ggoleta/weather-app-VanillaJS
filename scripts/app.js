@@ -3,8 +3,12 @@ const card = document.querySelector('.card')
 const details = document.querySelector('.details')
 
 const updateUI = (data) => {
-    const cityDets = data.cityDets
-    const weather = data.weather
+    // const cityDets = data.cityDets
+    // const weather = data.weather
+
+    // destructure properties - this is exactly the same thing above (commit)
+    // allows us take properties off the object and store them in a variable the same name as the property
+    const { cityDets, weather } = data
 
     // update details template
     details.innerHTML = `
