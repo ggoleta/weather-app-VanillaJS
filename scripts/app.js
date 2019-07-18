@@ -69,6 +69,7 @@ cityForm.addEventListener('submit', evt => {
     evt.preventDefault()
 
     const city = cityForm.city.value.trim()
+    localStorage.setItem('city', city)
     cityForm.reset() // clean input
     //console.log('cidade:',city)
 
@@ -77,3 +78,10 @@ cityForm.addEventListener('submit', evt => {
         .then(data => updateUI(data)) // pass info about the weather and city
         .catch(err => console.log(err))
 })
+
+if(localStorage.getItem('city')) {
+    const cityStorage = localStorage.getItem('city')
+    updateCity(cityStorage)
+        .then(data => updateUI(data))
+        .catch(err => console.log(err))
+}
