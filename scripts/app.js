@@ -3,6 +3,7 @@ const card = document.querySelector('.card')
 const details = document.querySelector('.details')
 const time = document.querySelector('img.time')
 const icon = document.querySelector('.icon img')
+const forecast = new Forecast()
 
 
 const updateUI = (data) => {
@@ -45,25 +46,6 @@ const updateUI = (data) => {
     }
 }
 
-const updateCity = async (city) => {
-
-    // getCity is a synchronous function
-    // resolve and await to passe result to cityDets
-    const cityDets = await getCity(city)
-
-    // getWeather is a synchronous function too
-    const weather = await getWeather(cityDets.Key)
-
-    //return {
-    //    cityDets: cityDets,
-    //    weather: weather
-    //}
-
-    // Object Shorthand Notation
-    return { cityDets, weather } 
-
-}
-
 cityForm.addEventListener('submit', evt => {
     // prevent Default
     evt.preventDefault()
@@ -74,14 +56,14 @@ cityForm.addEventListener('submit', evt => {
     //console.log('cidade:',city)
 
     // update the ui with new city
-    updateCity(city)
+    forecast.updateCity(city)
         .then(data => updateUI(data)) // pass info about the weather and city
         .catch(err => console.log(err))
 })
 
 if(localStorage.getItem('city')) {
     const cityStorage = localStorage.getItem('city')
-    updateCity(cityStorage)
+    forecast.updateCity(cityStorage)
         .then(data => updateUI(data))
         .catch(err => console.log(err))
 }
